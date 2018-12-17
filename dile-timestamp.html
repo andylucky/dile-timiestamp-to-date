@@ -1,0 +1,78 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+
+<dom-module id="dile-timestamp">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+   [[date]]
+  </template>
+
+  <script>
+
+    class DileTimestamp extends Polymer.Element {
+      static get is() { return 'dile-timestamp'; }
+      static get properties() {
+        return {
+          timestamp:{
+            type: Number
+          },
+
+          date:{
+          type: String,
+          value: '',
+          readOnly: true,
+          computed: 'timestampToString(timestamp, format)'
+        },
+        format:{
+          type: String,
+          value: "en"
+        },
+     
+        formatFunctions:{
+          type: Object,
+          readOnly: true,
+          value: function(){
+            debugger
+
+              return{
+                'en': function(date){
+                  return date.getMonth() + "/" + date.getDay() +"/" + date.getFullYear();
+                },
+                "es": function(date){
+                  return date.getDate() + "/" + date.getMonth() +"/" + date.getFullYear();
+                  }
+                }
+              }
+             }
+         }
+
+          }
+
+      /**
+       * this  method returns a date formatted string
+       * it should be a timestamp (miliseconds) an a valid format string (ie: "es")
+       * @param {number} timestamp to set
+       * @param {String} format to set ('es', 'en')
+       * return {String} formated string
+      * 
+      **/
+      timestampToString(timestamp, format){
+      if(!timestamp){
+        return '';
+      }
+      if(!this.formatFunctions[format]){
+        debugger
+        return 'invalid format';
+      }
+      debugger
+      let date = new Date(timestamp);
+      return this.formatFunctions[format](date);
+     }
+      }
+
+    window.customElements.define(DileTimestamp.is, DileTimestamp);
+  </script>
+</dom-module>

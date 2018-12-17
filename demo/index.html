@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>dile-timestamp demo</title>
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+   <!-- <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">  -->
+   <link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html"> 
+     <link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html"> 
+    <link rel="import" href="../dile-timestamp.html">
+
+  <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style> 
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic dile-timestamp demo</h3>
+      <demo-snippet>
+        <template>
+          <dile-timestamp timestamp="491066777700" format="en">Hola</dile-timestamp>
+        </template>
+      </demo-snippet>
+
+      <demo-snippet>
+        <template>
+          <dile-timestamp timestamp="491066777700" format="es" >Hola</dile-timestamp>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
